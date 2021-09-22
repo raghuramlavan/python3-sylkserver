@@ -27,7 +27,7 @@
   };
  
   inputs.python-sipsimple-src = {
-    url = github:AGprojects/python3-sipsimple;
+    url = github:raghuramlavan/python3-sipsimple;
     flake = false;
   };
   
@@ -39,7 +39,11 @@
     url = github:AGProjects/sylkserver;
     flake = false;
   };
-
+  
+  inputs.python-wokkel ={
+    url="https://files.pythonhosted.org/packages/6a/77/0ed9531b5374bdd0537c3cba62b9fc4f43f02ffd2bdc7da0572b965fc61a/wokkel-18.0.0.tar.gz";
+    flake =false;
+  };
 
   outputs =
     { self
@@ -52,6 +56,7 @@
     , python-sylkserver-src
     , python3-xcaplib-src
     , python3-msrplib-src
+    , python-wokkel
     }:
     let
 
@@ -75,15 +80,21 @@
           version = "3.1.3";
 
           src = python-gnutls-src;
-
+          buildInputs = [
+            pkgs.gnutls.bin
+          ];
+         patchPhase = ''
+           substituteInPlace gnutls/library/__init__.py --replace "/usr/local/lib" "${pkgs.gnutls.out}/lib"
+         '';
           propagatedBuildInputs = [
             python3Packages.twisted
             python3Packages.pyopenssl
             python3Packages.service-identity
+            pkgs.gnutls
           ];
-          doCheck=false;
+          doCheck=true;
           checkInputs = [
-           gnutls
+           pkgs.gnutls
           ];
 
           meta = with lib; {
@@ -94,7 +105,22 @@
         };
 
 
+        python-wokkel = with final; python3.pkgs.buildPythonPackage rec {
+          pname = "wokkel";
+          version = "18.0.0";
 
+          src = python-wokkel;
+
+          doCheck = true;
+
+          meta = with lib; {
+            description = "Python Wokkel -  testing ground for enhancements to the Jabber/XMPP protocol implementation as found in Twisted Words";
+            homepage = https://wokkel.ik.nu/;
+            license = licenses.lgpl2Plus;
+          };
+        };
+
+ 
  
         python-eventlib = with final; python3.pkgs.buildPythonPackage rec {
           pname = "python-eventlib";
@@ -119,19 +145,24 @@
          python-msrplib = with final; python3.pkgs.buildPythonPackage rec {
           pname = "python-msrplib";
           version = "0.21.0";
-
+          
+          buildInputs = [
+          pkgs.gnutls
+          ];
           src = python3-msrplib-src;
+          
+
           propagatedBuildInputs = [
             (python3.withPackages
             (ps: with ps; [
             lxml
             python-eventlib
             gevent
+            python-gnutls
+            final.application
           ]))
           ];
 
-
-          doCheck = true;
 
           meta = with lib; {
             description = "Netowork lib";
@@ -155,7 +186,8 @@
               python-eventlib
               gevent
               lxml 
-              python-application-ag
+              python-gnutls
+              final.application
             ]))];
 
           meta = with lib; {
@@ -168,8 +200,8 @@
  
  
  
-        python-application-ag = with final; python3.pkgs.buildPythonPackage rec {
-          pname = "python-application";
+        application = with final; python3.pkgs.buildPythonPackage rec {
+          pname = "application";
           version = "3.0.3";
 
           src = python-application-src;
@@ -200,14 +232,17 @@
           propagatedBuildInputs = [
             (python3.withPackages
             (ps: with ps; [
-            python-application-ag  
             enum34
             gmpy2
             zope_interface
             cryptography
+            final.application
           ])) ];
-
-          doCheck = true;
+         patchPhase = ''
+           substituteInPlace setup.py --replace "['gmpy2', 'zope.interface', 'application', 'cryptography']" "['gmpy2', 'zope.interface','cryptography']"
+         '';
+ 
+          doCheck = false;
 
           meta = with lib; {
             description = "AGProjects python3-otr";
@@ -218,14 +253,17 @@
 
         python-sipsimple = with final; python3.pkgs.buildPythonPackage rec {
           pname = "python-sipsimple";
-          version = "3.6.0";
-          preConfigure = ''
-            chmod +x ./deps/pjsip/configure ./deps/pjsip/aconfigure
-            export LD=$CC
-          '';
+          version = "5.2.6";
+  
           src = python-sipsimple-src;
 
-          nativeBuildInputs = [ pkgs.pkgconfig ];
+           preConfigure = ''
+            chmod +x ./deps/pjsip/configure ./deps/pjsip/aconfigure
+            export LD=$CC
+           '';
+
+
+          nativeBuildInputs = [ wget pkgs.pkgconfig ];
 
           buildInputs = with pkgs; [ openssl.dev alsaLib ffmpeg libv4l sqlite libvpx python3Packages.cython ];
 
@@ -234,7 +272,6 @@
             (ps: with ps; [
             autobahn
             openssl
-            dnspython_1
             lxml
             twisted
             dateutil
@@ -242,14 +279,17 @@
             python-xcaplib
             python-msrplib
             python-gnutls
-            python-application-ag
+            final.application
             python-eventlib
             python-otr-ag
+            gevent
             pkg-config
             setuptools
           ]))
           ];
 
+
+          doCheck = false;
 
           meta = with lib; {
             description = "SIP Simple Client SDK";
@@ -271,16 +311,25 @@
         
             setuptools
             python-sipsimple
-            python-application-ag
+            final.application
             lxml
             twisted
             klein
             autobahn
-            typing
             werkzeug
+            python-gnutls
+            python-eventlib
+            python-xcaplib
+            dateutil
+            gevent
+            python-msrplib
+            python-otr-ag
+            gmpy2
+            python-wokkel
           ]))
           ];
 
+          doCheck = false;
 
           meta = with lib; {
             description = "SIP Simple Client SDK";

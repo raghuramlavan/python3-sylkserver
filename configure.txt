@@ -1,0 +1,35 @@
+       preConfigure = ''
+            mkdir -p ./deps/pjsip
+            ls -l
+            cp -r ${pjsip}/* ${src}/deps/pjsip
+            
+            ls -l
+            mkdir -p ${src}/pjsip/third_party/zsrtp
+
+
+            mkdir -p ./pjsip/third_party/zsrtp
+            cp -r ${ZRTP}/include ./pjsip/third_party/zsrtp/
+            cp -r ${ZRTP}/srtp    ./pjsip/third_party/zsrtp/
+            cp -r ${ZRTP}/build   ./pjsip/third_party/build/zsrtp
+            
+            mkdir ./pjsip/third_party/zsrtp/zrtp
+            cp -r ${ZRTP}/bnlib ./pjsip/third_party/zsrtp/zrtp/
+            cp -r ${ZRTP}/common ./pjsip/third_party/zsrtp/zrtp/
+            cp -r Z${ZRTP}/cryptcommon ./pjsip/third_party/zsrtp/zrtp/
+            cp -r Z${ZRTP}/srtp ./pjsip/third_party/zsrtp/zrtp/
+            cp -r Z${ZRTP}/zrtp ./pjsip/third_party/zsrtp/zrtp/
+            cp  ${ZRTP}/COPYING ./pjsip/third_party/zsrtp/zrtp/
+            cp  ${ZRTP}/README.md ./pjsip/third_party/zsrtp/zrtp/
+            
+            for p in patches/*.patch; do
+                echo "Applying patch $p"
+                cat $p | patch -p0 > /dev/null
+            done
+            
+            cd - > /dev/null
+  
+            chmod +x ./deps/pjsip/configure ./deps/pjsip/aconfigure
+            export LD=$CC
+            '';
+  
+

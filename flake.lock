@@ -82,15 +82,15 @@
     "python-sipsimple-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1629224466,
-        "narHash": "sha256-eDCJHb4RphsykDpt5rCjz/GijfhbBLMLwRUhD4hRc5I=",
-        "owner": "AGprojects",
+        "lastModified": 1632310647,
+        "narHash": "sha256-l5BncWoj45aP5cMFMIqEPgEEke6GZh+EX9OIohrv85c=",
+        "owner": "raghuramlavan",
         "repo": "python3-sipsimple",
-        "rev": "8271220956f7d76ed467398329530efa4546666a",
+        "rev": "c73411ff415754fa1fdc825d74991625d544f5be",
         "type": "github"
       },
       "original": {
-        "owner": "AGprojects",
+        "owner": "raghuramlavan",
         "repo": "python3-sipsimple",
         "type": "github"
       }
@@ -111,19 +111,31 @@
         "type": "github"
       }
     },
+    "python-wokkel": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-AmMQ9vCwsnTTKsZEUg2ihu3wsL4n7TZ5Ue+WuSP40HQ=",
+        "type": "tarball",
+        "url": "https://files.pythonhosted.org/packages/6a/77/0ed9531b5374bdd0537c3cba62b9fc4f43f02ffd2bdc7da0572b965fc61a/wokkel-18.0.0.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://files.pythonhosted.org/packages/6a/77/0ed9531b5374bdd0537c3cba62b9fc4f43f02ffd2bdc7da0572b965fc61a/wokkel-18.0.0.tar.gz"
+      }
+    },
     "python3-msrplib-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1631710555,
-        "narHash": "sha256-tIHDkseFkLqrdXFPSemYfOMRRhNcqJxCgMSr2xkI/DA=",
+        "lastModified": 1622569245,
+        "narHash": "sha256-z0gF/oQW/h3qiCL1cFWBPK7JYzLCNAD7/dg7HfY4rig=",
         "owner": "AGProjects",
-        "repo": "python3-xcaplib",
-        "rev": "a21a334ecbe2d85feb70286c7b4fd97b7cb849e0",
+        "repo": "python3-msrplib",
+        "rev": "5bd069620d436d5a65e1c369e43cc6b88857fb9e",
         "type": "github"
       },
       "original": {
         "owner": "AGProjects",
-        "repo": "python3-xcaplib",
+        "repo": "python3-msrplib",
         "type": "github"
       }
     },
@@ -152,6 +164,7 @@
         "python-otr-src": "python-otr-src",
         "python-sipsimple-src": "python-sipsimple-src",
         "python-sylkserver-src": "python-sylkserver-src",
+        "python-wokkel": "python-wokkel",
         "python3-msrplib-src": "python3-msrplib-src",
         "python3-xcaplib-src": "python3-xcaplib-src"
       }
