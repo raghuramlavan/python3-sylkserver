@@ -1,0 +1,162 @@
+{
+  "nodes": {
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1625876282,
+        "narHash": "sha256-z/Gv+11Uzdv3HcQCY+xGi1+iuc3rmCaPzxxDSMnuRAI=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "068984c00e0d4e54b6684d98f6ac47c92dcb642e",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "ref": "nixos-20.09",
+        "type": "indirect"
+      }
+    },
+    "python-application-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1630324309,
+        "narHash": "sha256-hZeG5y/fDTy7EuSkFG8ruMGwK5UaqUv8I3bj4Egyl6A=",
+        "owner": "AGProjects",
+        "repo": "python3-application",
+        "rev": "8209f3334c9b603fc81509333c38909755f663db",
+        "type": "github"
+      },
+      "original": {
+        "owner": "AGProjects",
+        "repo": "python3-application",
+        "type": "github"
+      }
+    },
+    "python-eventlib-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1614775524,
+        "narHash": "sha256-LFW3rCGa7A8tk6SjgYgjkLQ+72GE2WN8wG+XkXYTAoQ=",
+        "owner": "AGProjects",
+        "repo": "python3-eventlib",
+        "rev": "1b46db21102f835eb6316020aeaff39b88ecc8f7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "AGProjects",
+        "repo": "python3-eventlib",
+        "type": "github"
+      }
+    },
+    "python-gnutls-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1619790079,
+        "narHash": "sha256-18T8bAHlNERHobsspUFvSC6ulN55nrFFb5aqNwU8T00=",
+        "owner": "AGProjects",
+        "repo": "python3-gnutls",
+        "rev": "324b78f7cd3d9fe58c89c7f0b2bf94199bd6a6e5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "AGProjects",
+        "repo": "python3-gnutls",
+        "type": "github"
+      }
+    },
+    "python-otr-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1614252156,
+        "narHash": "sha256-XsJQIRZj04TkoWIddOc0evXwNFP/IYF/z/nO7mC0aVY=",
+        "owner": "AGProjects",
+        "repo": "python3-otr",
+        "rev": "14218f8ea405246f6f9046b333ad31304fb51661",
+        "type": "github"
+      },
+      "original": {
+        "owner": "AGProjects",
+        "repo": "python3-otr",
+        "type": "github"
+      }
+    },
+    "python-sipsimple-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1629224466,
+        "narHash": "sha256-eDCJHb4RphsykDpt5rCjz/GijfhbBLMLwRUhD4hRc5I=",
+        "owner": "AGprojects",
+        "repo": "python3-sipsimple",
+        "rev": "8271220956f7d76ed467398329530efa4546666a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "AGprojects",
+        "repo": "python3-sipsimple",
+        "type": "github"
+      }
+    },
+    "python-sylkserver-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1631693229,
+        "narHash": "sha256-xY7SNRtm5tNS7QRl0eIRhm3ob+yhnY5LR0oZAniu+dM=",
+        "owner": "AGProjects",
+        "repo": "sylkserver",
+        "rev": "5eedfecf8038b941fa2f21888761df25d8c1e325",
+        "type": "github"
+      },
+      "original": {
+        "owner": "AGProjects",
+        "repo": "sylkserver",
+        "type": "github"
+      }
+    },
+    "python3-msrplib-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1631710555,
+        "narHash": "sha256-tIHDkseFkLqrdXFPSemYfOMRRhNcqJxCgMSr2xkI/DA=",
+        "owner": "AGProjects",
+        "repo": "python3-xcaplib",
+        "rev": "a21a334ecbe2d85feb70286c7b4fd97b7cb849e0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "AGProjects",
+        "repo": "python3-xcaplib",
+        "type": "github"
+      }
+    },
+    "python3-xcaplib-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1631710555,
+        "narHash": "sha256-tIHDkseFkLqrdXFPSemYfOMRRhNcqJxCgMSr2xkI/DA=",
+        "owner": "AGProjects",
+        "repo": "python3-xcaplib",
+        "rev": "a21a334ecbe2d85feb70286c7b4fd97b7cb849e0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "AGProjects",
+        "repo": "python3-xcaplib",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "nixpkgs": "nixpkgs",
+        "python-application-src": "python-application-src",
+        "python-eventlib-src": "python-eventlib-src",
+        "python-gnutls-src": "python-gnutls-src",
+        "python-otr-src": "python-otr-src",
+        "python-sipsimple-src": "python-sipsimple-src",
+        "python-sylkserver-src": "python-sylkserver-src",
+        "python3-msrplib-src": "python3-msrplib-src",
+        "python3-xcaplib-src": "python3-xcaplib-src"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}

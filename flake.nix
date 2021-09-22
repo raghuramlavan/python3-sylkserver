@@ -22,7 +22,7 @@
   };
 
   inputs.python3-msrplib-src = {
-    url = github:AGProjects/python3-xcaplib;
+    url = github:AGProjects/python3-msrplib;
     flake = false;
   };
  
@@ -124,11 +124,9 @@
           propagatedBuildInputs = [
             (python3.withPackages
             (ps: with ps; [
- 
             lxml
             python-eventlib
             gevent
-            python-application-ag
           ]))
           ];
 
@@ -202,11 +200,11 @@
           propagatedBuildInputs = [
             (python3.withPackages
             (ps: with ps; [
+            python-application-ag  
             enum34
             gmpy2
             zope_interface
             cryptography
-            python-application-ag
           ])) ];
 
           doCheck = true;
