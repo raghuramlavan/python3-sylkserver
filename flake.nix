@@ -65,7 +65,6 @@
 
       forAllSystems = f: nixpkgs.lib.genAttrs supportedSystems (system: f system);
 
-
       nixpkgsFor = forAllSystems (system: import nixpkgs { inherit system; overlays = [ self.overlay ]; });
 
     in
@@ -105,13 +104,20 @@
         };
 
 
-        python-wokkel = with final; python3.pkgs.buildPythonPackage rec {
+        wokkel = with final; python3.pkgs.buildPythonPackage rec {
           pname = "wokkel";
           version = "18.0.0";
 
           src = python-wokkel;
 
-          doCheck = true;
+          propagatedBuildInputs = [
+            python3Packages.incremental
+            python3Packages.python-dateutil
+            python3Packages.twisted
+            python3Packages.pyopenssl
+            python3Packages.service-identity
+          ];
+          doCheck = false;
 
           meta = with lib; {
             description = "Python Wokkel -  testing ground for enhancements to the Jabber/XMPP protocol implementation as found in Twisted Words";
@@ -153,14 +159,11 @@
           
 
           propagatedBuildInputs = [
-            (python3.withPackages
-            (ps: with ps; [
-            lxml
+            python3Packages.lxml
             python-eventlib
-            gevent
+            python3Packages.gevent
             python-gnutls
-            final.application
-          ]))
+            application
           ];
 
 
@@ -181,14 +184,12 @@
           doCheck = true;
 
           checkInputs =[
-            (python3.withPackages
-            (ps: with ps; [
               python-eventlib
-              gevent
-              lxml 
+              python3Packages.gevent
+              python3Packages.lxml 
               python-gnutls
-              final.application
-            ]))];
+              application
+          ];
 
           meta = with lib; {
             description = "Netowork lib";
@@ -230,14 +231,11 @@
           src = python-otr-src;
 
           propagatedBuildInputs = [
-            (python3.withPackages
-            (ps: with ps; [
-            enum34
-            gmpy2
-            zope_interface
-            cryptography
-            final.application
-          ])) ];
+            python3Packages.enum34
+            python3Packages.gmpy2
+            python3Packages.cryptography
+            application
+         ];
          patchPhase = ''
            substituteInPlace setup.py --replace "['gmpy2', 'zope.interface', 'application', 'cryptography']" "['gmpy2', 'zope.interface','cryptography']"
          '';
@@ -268,24 +266,18 @@
           buildInputs = with pkgs; [ openssl.dev alsaLib ffmpeg libv4l sqlite libvpx python3Packages.cython ];
 
           propagatedBuildInputs = [
-            (python3.withPackages
-            (ps: with ps; [
-            autobahn
+            python3Packages.autobahn
             openssl
-            lxml
-            twisted
-            dateutil
-            greenlet
+            python3Packages.lxml
+            python3Packages.twisted
+            python3Packages.dateutil
+            python3Packages.greenlet
             python-xcaplib
             python-msrplib
             python-gnutls
-            final.application
             python-eventlib
             python-otr-ag
-            gevent
-            pkg-config
-            setuptools
-          ]))
+            python3Packages.gevent
           ];
 
 
@@ -306,28 +298,17 @@
           src = python-sylkserver-src;
 
           propagatedBuildInputs = [
-            (python3.withPackages
-            (ps: with ps; [
         
-            setuptools
             python-sipsimple
-            final.application
-            lxml
-            twisted
-            klein
-            autobahn
-            werkzeug
+            python3Packages.klein
+            python3Packages.werkzeug
             python-gnutls
-            python-eventlib
             python-xcaplib
-            dateutil
-            gevent
             python-msrplib
             python-otr-ag
-            gmpy2
-            python-wokkel
-          ]))
+            wokkel
           ];
+          checkImport = [ wokkel ];
 
           doCheck = false;
 
