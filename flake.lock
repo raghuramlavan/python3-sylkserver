@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "ZRTPCPP": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1590687588,
+        "narHash": "sha256-kJlGPVA+yfn7fuRjXU0p234VcZBAf1MU4gRKuPotfog=",
+        "owner": "wernerd",
+        "repo": "ZRTPCPP",
+        "rev": "6b3cd8e6783642292bad0c21e3e5e5ce45ff3e03",
+        "type": "github"
+      },
+      "original": {
+        "owner": "wernerd",
+        "repo": "ZRTPCPP",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1625876282,
@@ -13,6 +29,23 @@
         "id": "nixpkgs",
         "ref": "nixos-20.09",
         "type": "indirect"
+      }
+    },
+    "pjsip": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1581673707,
+        "narHash": "sha256-4BOHrlCqLsjydRv1Ck91FcFSWWklDjDRKQgx/i6LdKo=",
+        "owner": "pjsip",
+        "repo": "pjproject",
+        "rev": "3e7b75cb2e482baee58c1991bd2fa4fb06774e0d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pjsip",
+        "repo": "pjproject",
+        "rev": "3e7b75cb2e482baee58c1991bd2fa4fb06774e0d",
+        "type": "github"
       }
     },
     "python-application-src": {
@@ -82,15 +115,15 @@
     "python-sipsimple-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1632310647,
-        "narHash": "sha256-l5BncWoj45aP5cMFMIqEPgEEke6GZh+EX9OIohrv85c=",
-        "owner": "raghuramlavan",
+        "lastModified": 1629224466,
+        "narHash": "sha256-eDCJHb4RphsykDpt5rCjz/GijfhbBLMLwRUhD4hRc5I=",
+        "owner": "AGProjects",
         "repo": "python3-sipsimple",
-        "rev": "c73411ff415754fa1fdc825d74991625d544f5be",
+        "rev": "8271220956f7d76ed467398329530efa4546666a",
         "type": "github"
       },
       "original": {
-        "owner": "raghuramlavan",
+        "owner": "AGProjects",
         "repo": "python3-sipsimple",
         "type": "github"
       }
@@ -157,7 +190,9 @@
     },
     "root": {
       "inputs": {
+        "ZRTPCPP": "ZRTPCPP",
         "nixpkgs": "nixpkgs",
+        "pjsip": "pjsip",
         "python-application-src": "python-application-src",
         "python-eventlib-src": "python-eventlib-src",
         "python-gnutls-src": "python-gnutls-src",
